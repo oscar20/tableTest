@@ -117,6 +117,19 @@ class TableViewController: UITableViewController {
         return rowData.hasPrefix("O")
     }
     
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let alertController = UIAlertController(title: "Marcando alumnos", message: "¿Desea marcarlo?", preferredStyle: .alert)
+        let cancelAction = UIAlertAction(title: "Cancelar", style: .cancel, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .default) { (action) in
+            let cell = tableView.cellForRow(at: indexPath) //nos crea una celda dado el index path
+            cell?.accessoryType = .checkmark
+        }
+        alertController.addAction(cancelAction)
+        alertController.addAction(okAction)
+        present(alertController, animated: true, completion: nil)
+        
+    }
+    
  
 
     /*
