@@ -129,6 +129,22 @@ class TableViewController: UITableViewController {
         present(alertController, animated: true, completion: nil)
         
     }
+    //para efecto de transparecnia(fade) cuando aparece la tabla
+    /*override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        cell.alpha = 0
+        UIView.animate(withDuration: 1.0, animations: {cell.alpha = 1})
+    }*/
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        let rotationAngleinRadians = 90 * CGFloat(M_PI/180)
+        //let rotationTransform = CATransform3DMakeRotation(rotationAngleinRadians, 0, 0, 1)
+        let rotationTransform = CATransform3DTranslate(CATransform3DIdentity, -500, 100, 0)
+        
+        cell.layer.transform = rotationTransform
+        UIView.animate(withDuration: 1.0) {
+            cell.layer.transform = CATransform3DIdentity
+        }
+    }
     
  
 
