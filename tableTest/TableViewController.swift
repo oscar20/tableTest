@@ -112,6 +112,10 @@ class TableViewController: UITableViewController {
         tableView.reloadData()
     }
     
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+        let rowData = self.alumnos[indexPath.row]
+        return rowData.hasPrefix("O")
+    }
     
  
 
